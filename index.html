@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Function to assign computer choice
+        function getComputerChoice () {
+            let randomNumber = Math.random();
+            if (randomNumber < 0.33) {
+                return "rock";
+            }
+            else if (randomNumber < 0.66) {
+                return "paper";
+            }
+            return "scissors";
+        }
+
+        //Function to compare player selection and computer selection
+        function playRound(playerSelection, computerSelection) {
+            switch (computerSelection) {
+                case "rock":
+                    switch (playerSelection) {
+                        case "rock": return "It's tie";
+                        case "paper": return "You win! Paper beats rock";
+                        case "scissors": return "You lose! Rock beats scissors";
+                    }
+                case "paper":
+                    switch (playerSelection) {
+                        case "rock": return "You lose! Paper beats rock";
+                        case "paper": return "It's tie";
+                        case "scissors": return "You win! Scissors beats paper";
+                    }
+                case "scissors":
+                    switch (playerSelection) {
+                        case "rock": return "You win! Rock beats scissors"
+                        case "paper": return "You lose! Scissors beat paper";
+                        case "scissors": return "It's tie";
+                    }
+            }
+        }
+
+
+        const playerSelection = "rock";
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    </script>
+</body>
+</html>
