@@ -19,10 +19,10 @@
         //function to assign computer choice
         function getComputerChoice () {
             let randomNumber = Math.random();
-            if (randomNumber < 0.33) {
+            if (randomNumber <= 0.33) {
                 return "rock";
             }
-            else if (randomNumber < 0.66) {
+            else if (randomNumber <= 0.66) {
                 return "paper";
             }
             return "scissors";
@@ -66,43 +66,55 @@
         //     }
         //}
 
-        function playRound(playerSelection = prompt("Your choice?"), computerSelection = getComputerChoice()) {
+        function playRound(playerSelection, computerSelection) {
             
 
-            if (playerSelection === "rock" && computerSelection === "paper") {
+            if (playerSelection === null) {
+                k = 5;
+                alert("Game terminated!");
+            }
+            
+            else if (playerSelection == "rock" && computerSelection == "paper") {
                 ++j;
                 //return "You lose!";
-                alert("You lose this round! Score YOU: " + i + " COMPUTER: " + j);
+                alert("You lose this round! Paper beats rock. Score YOU: " + i + " COMPUTER: " + j);
             }
-            else if (playerSelection === "rock" && computerSelection === "scissors") {
+
+            else if (playerSelection == "rock" && computerSelection == "scissors") {
                 ++i;
                 //return "You win!";
-                alert("You won this round! Score YOU: " + i + " COMPUTER: " + j);
+                alert("You won this round! Rock beats scissors. Score YOU: " + i + " COMPUTER: " + j);
             }
-            else if (playerSelection === "paper" && computerSelection === "scissors") {
+
+            else if (playerSelection == "paper" && computerSelection == "scissors") {
                 ++j;
                 //return "You lose!";
-                alert("You lose this round! Score YOU: " + i + " COMPUTER: " + j);
+                alert("You lose this round! Scissors beats paper. Score YOU: " + i + " COMPUTER: " + j);
             }
-            else if (playerSelection === "paper" && computerSelection === "rock") {
+
+            else if (playerSelection == "paper" && computerSelection == "rock") {
                 ++i;
                 //return "You win!";
-                alert("You won this round! Score YOU: " + i + " COMPUTER: " + j);
+                alert("You won this round! Paper beats rock. Score YOU: " + i + " COMPUTER: " + j);
             }
-            else if (playerSelection === "scissors" && computerSelection === "rock") {
+
+            else if (playerSelection == "scissors" && computerSelection == "rock") {
                 ++j;
                 //return "You lose!";
-                alert("You lose this round! Score YOU: " + i + " COMPUTER: " + j);
+                alert("You lose this round! Rock beats scissors. Score YOU: " + i + " COMPUTER: " + j);
             }
-            else if (playerSelection === "scissors" && computerSelection === "paper") {
+
+            else if (playerSelection == "scissors" && computerSelection == "paper") {
                 ++i;
                 //return "You win!";
-                alert("You won this round! Score YOU: " + i + " COMPUTER: " + j);
+                alert("You won this round! Scissors beats paper. Score YOU: " + i + " COMPUTER: " + j);
             }
+
             else if (playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors") {
                 //return "Not a valid option";
                 alert("Not a valid option! Score YOU: " + i + " COMPUTER: " + j);
             }
+            
             else {
                 //return "It's a tie";
                 alert("This round is a tie! Score YOU: " + i + " COMPUTER: " + j);
@@ -114,15 +126,16 @@
         function playGame () {
             i = 0;
             j = 0;
+            k = 0;
 
-            while (i < 3 & j < 3) {
-                playRound(playerSelection, computerSelection);
+            while (i < 3 & j < 3 & k < 5) {
+                playRound(playerSelection = prompt("Your choice?"), computerSelection = getComputerChoice());
                 //text = 'Your score is ' + i;
             }
             if (i > j) {
                 alert("You win! Final score is YOU: " + i + " COMPUTER: " + j);
             }
-            else alert("You lose! Final score is YOU: " + i + " COMPUTER: " + j);
+            else if (j > i) alert("You lose! Final score is YOU: " + i + " COMPUTER: " + j);
         }
         playGame();
 
