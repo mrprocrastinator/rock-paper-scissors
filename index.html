@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game: Rock, Paper or Scissors</title>
 </head>
 <body>
     <script>
@@ -74,50 +74,26 @@
                 alert("Game terminated!");
             }
             
-            else if (playerSelection == "rock" && computerSelection == "paper") {
-                ++j;
-                //return "You lose!";
-                alert("You lose this round! Paper beats rock. Score YOU: " + i + " COMPUTER: " + j);
-            }
-
-            else if (playerSelection == "rock" && computerSelection == "scissors") {
+            else if ((playerSelection == "rock" && computerSelection == "scissors") ||
+                    (playerSelection == "paper" && computerSelection == "rock") ||
+                    (playerSelection == "scissors" && computerSelection == "paper")) {
                 ++i;
-                //return "You win!";
-                alert("You won this round! Rock beats scissors. Score YOU: " + i + " COMPUTER: " + j);
+                alert("You won! " +playerSelection + " beats " +computerSelection +"\n\nPlayer Score: " + i + "\nComputer Score: " + j);
             }
 
-            else if (playerSelection == "paper" && computerSelection == "scissors") {
+            else if ((playerSelection == "rock" && computerSelection == "paper") ||
+                    (playerSelection == "paper" && computerSelection == "scissors") ||
+                    (playerSelection == "scissors" && computerSelection == "rock")) {
                 ++j;
-                //return "You lose!";
-                alert("You lose this round! Scissors beats paper. Score YOU: " + i + " COMPUTER: " + j);
+                alert("You lose! " +computerSelection + " beats " +playerSelection +"\n\nPlayer Score: " + i + "\nComputer Score: " + j);
             }
 
-            else if (playerSelection == "paper" && computerSelection == "rock") {
-                ++i;
-                //return "You win!";
-                alert("You won this round! Paper beats rock. Score YOU: " + i + " COMPUTER: " + j);
+            else if (playerSelection == computerSelection) {
+                alert("It's a tie! You both chose " +playerSelection +"\n\n Player Score: " + i + "\nComputer Score: " + j)
             }
 
-            else if (playerSelection == "scissors" && computerSelection == "rock") {
-                ++j;
-                //return "You lose!";
-                alert("You lose this round! Rock beats scissors. Score YOU: " + i + " COMPUTER: " + j);
-            }
-
-            else if (playerSelection == "scissors" && computerSelection == "paper") {
-                ++i;
-                //return "You win!";
-                alert("You won this round! Scissors beats paper. Score YOU: " + i + " COMPUTER: " + j);
-            }
-
-            else if (playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors") {
-                //return "Not a valid option";
-                alert("Not a valid option! Score YOU: " + i + " COMPUTER: " + j);
-            }
-            
             else {
-                //return "It's a tie";
-                alert("This round is a tie! Score YOU: " + i + " COMPUTER: " + j);
+                alert("Not a valid option!");
             }
         }
 
@@ -133,9 +109,9 @@
                 //text = 'Your score is ' + i;
             }
             if (i > j) {
-                alert("You win! Final score is YOU: " + i + " COMPUTER: " + j);
+                alert("You won the game! Reload to play again. \n\nPlayer Score: " + i + "\nComputer Score: " + j);
             }
-            else if (j > i) alert("You lose! Final score is YOU: " + i + " COMPUTER: " + j);
+            else if (j > i) alert("I won the game! Reload to play again. \n\nPlayer Score: " + i + "\nComputer Score: " + j);
         }
         playGame();
 
