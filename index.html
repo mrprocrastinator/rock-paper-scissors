@@ -8,10 +8,10 @@
 <body>
     <script>
         //global variable to count player wins
-        let i = 0;
+        let playerScore = 0;
 
         //global variable to count computer wins
-        let j = 0;
+        let computerScore = 0;
 
         let playerSelection;
         let computerSelection;
@@ -77,19 +77,19 @@
             else if ((playerSelection == "rock" && computerSelection == "scissors") ||
                     (playerSelection == "paper" && computerSelection == "rock") ||
                     (playerSelection == "scissors" && computerSelection == "paper")) {
-                ++i;
-                alert("You won! " +playerSelection + " beats " +computerSelection +"\n\nPlayer Score: " + i + "\nComputer Score: " + j);
+                ++playerScore;
+                alert("You won! " +playerSelection + " beats " +computerSelection +"\n\nPlayer Score: " + playerScore + "\nComputer Score: " + computerScore);
             }
 
             else if ((playerSelection == "rock" && computerSelection == "paper") ||
                     (playerSelection == "paper" && computerSelection == "scissors") ||
                     (playerSelection == "scissors" && computerSelection == "rock")) {
-                ++j;
-                alert("You lose! " +computerSelection + " beats " +playerSelection +"\n\nPlayer Score: " + i + "\nComputer Score: " + j);
+                ++computerScore;
+                alert("You lose! " +computerSelection + " beats " +playerSelection +"\n\nPlayer Score: " + playerScore + "\nComputer Score: " + computerScore);
             }
 
             else if (playerSelection == computerSelection) {
-                alert("It's a tie! You both chose " +playerSelection +"\n\n Player Score: " + i + "\nComputer Score: " + j)
+                alert("It's a tie! You both chose " +playerSelection +"\n\n Player Score: " + playerScore + "\nComputer Score: " + computerScore)
             }
 
             else {
@@ -100,18 +100,17 @@
 
         //function to play the game 5 times
         function playGame () {
-            i = 0;
-            j = 0;
+            playerScore = 0;
+            computerScore = 0;
             k = 0;
 
-            while (i < 3 & j < 3 & k < 5) {
+            while (playerScore < 3 & computerScore < 3 & k < 5) {
                 playRound(playerSelection = prompt("Your choice?"), computerSelection = getComputerChoice());
-                //text = 'Your score is ' + i;
             }
-            if (i > j) {
-                alert("You won the game! Reload to play again. \n\nPlayer Score: " + i + "\nComputer Score: " + j);
+            if (playerScore > computerScore) {
+                alert("You won the game! Reload to play again. \n\nPlayer Score: " + playerScore + "\nComputer Score: " + computerScore);
             }
-            else if (j > i) alert("I won the game! Reload to play again. \n\nPlayer Score: " + i + "\nComputer Score: " + j);
+            else if (computerScore > playerScore) alert("I won the game! Reload to play again. \n\nPlayer Score: " + playerScore + "\nComputer Score: " + computerScore);
         }
         playGame();
 
